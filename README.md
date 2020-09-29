@@ -14,7 +14,14 @@ This tool is created as a part of learning shell scripting, now I am making vari
 ### Installation
 
 ```sh
-$ cd dillinger
-$ npm install -d
-$ node app
+$ git clone https://github.com/secretguard/web-recon.git
+$ cd web-recon
+```
+
+
+### Usage
+
+```sh
+$ ./web-recon -h
+$ ./web-recon -d domain_name
 ```
