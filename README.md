@@ -22,6 +22,6 @@ $ cd web-recon
 ### Usage
 
 ```sh
-$ ./web-recon -h
-$ ./web-recon -d domain_name
+$ ./web-recon.sh -h
+$ ./web-recon.sh -d domain_name
 ```
