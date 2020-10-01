@@ -16,6 +16,7 @@ This tool is created as a part of learning shell scripting, now I am making vari
 ```sh
 $ git clone https://github.com/secretguard/web-recon.git
 $ cd web-recon
+$ ./install.sh
 ```
 
 
