@@ -15,7 +15,7 @@ bye=$(echo -e ${bold}"\U1F44B")
 
 #Creating temporary file for saving data
 maketmp(){
-mkdir tmp_dom
+mkdir -p tmp_dom
 touch tmp_dom/tmp_subdomains.txt
 touch tmp_dom/tmp_cnames.txt
 }
@@ -75,9 +75,12 @@ echo "Script execution completed ${thumbs}"
 
 #help Message
 help_msg(){
-echo -e "Usage of $0 : \n \n ${bold}${red}-d ${bold}${reset}: To find the subdomains of a domain and gather CNAME of those subdomains \n (example : $0 -d example.com)
-	\n ${bold}${red} "
-#-f ${bold}${reset}: To find the CNAME record of subdomains from given subdomain file\n (example : $0 -f subdomains.txt) \n "
+    cat <<EOF2
+Usage: $0 [option]
+
+-d <domain>  Find subdomains of <domain> and gather their CNAME records.
+-h           Show this help message.
+EOF2
 }
 
 ctrlc(){
@@ -96,10 +99,14 @@ if [[ $# == 0 ]]; then
 else
 	
 	case $1 in
-	-d )
-	start_time=$(date +%s)
-	maketmp
-	collect_subs
+        -d )
+        if [[ -z "$2" ]]; then
+                echo "Domain name missing. Use $0 -h for help"
+                exit 1
+        fi
+        start_time=$(date +%s)
+        maketmp
+        collect_subs
 	cname_check
 	clean_tmp
 	finish_time=$(date +%s)
